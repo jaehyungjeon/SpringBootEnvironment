@@ -73,7 +73,8 @@ public class MainService {
 		for(Member b : mainRepositoryOverrideList) {
 			log.info("쿼리DSL을 Override 하여 사용했을 때 {}", b);
 		}
-//		log.info("password={}", jasyptEncoding("wjswpgud1!"));
+
+		log.info("password={}", jasyptEncoding("test123"));
 	}
 
 	public String jasyptEncoding(String value) {
