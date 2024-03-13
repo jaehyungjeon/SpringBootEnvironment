@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>메인 페이지</title>
+	</head>
+	<body>
+		Main Page
+		<button id="print">출력</button>
+		<br/>
+		<hr/>
+		<th:block th:each="member : ${data}">
+			<li th:text="${member.name}" />
+		</th:block>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				const fnPrint = () => {
+					window.print();
+				}
+
+				// 프린트 출력
+				document.querySelector("#print").addEventListener("click", (e) => {
+					e.target.style.display = "none"
+					fnPrint();
+				});
+
+				// 프린트 이후 이벤트(출력 버튼 미노출을 위함.)
+				window.onafterprint = function() {
+					document.querySelector("#print").style.display = 'block';
+					console.log("취소");
+				}
+			}
+		</script>
+	</body>
+</html>
