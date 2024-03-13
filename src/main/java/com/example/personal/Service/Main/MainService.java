@@ -73,16 +73,6 @@ public class MainService {
 		for(Member b : mainRepositoryOverrideList) {
 			log.info("쿼리DSL을 Override 하여 사용했을 때 {}", b);
 		}
-
-		log.info("password={}", jasyptEncoding("test123"));
-	}
-
-	public String jasyptEncoding(String value) {
-		String key = "my_jasypt_key";
-		StandardPBEStringEncryptor pbeEnc = new StandardPBEStringEncryptor();
-		pbeEnc.setAlgorithm("PBEWithMD5AndDES");
-		pbeEnc.setPassword(key);
-		return pbeEnc.encrypt(value);
 	}
 
 	public List<Member> returnQueryMemberList(Member member) throws Exception {
