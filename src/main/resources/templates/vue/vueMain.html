@@ -6,11 +6,14 @@
 </head>
 <body>
 <div class="hello">
+    <h1>Vue3 적용 HTML 예시</h1>
     <ul>
         <li v-for="item in arrayData">
             {{ item }}
         </li>
     </ul>
+    <br/>
+    <button v-on:click="clickMethod('siuuuuu!!')" v-text="buttonMsg"></button>
 </div>
 
 <script src="https://unpkg.com/vue"></script>
@@ -19,7 +22,13 @@
         name : 'hello',
         data() {
             return {
-                arrayData : ['jeon', 'jae', 'hyung']
+                arrayData : ['jeon', 'jae', 'hyung'],
+                buttonMsg : '끌어오는 데이터 전용 버튼'
+            }
+        },
+        methods : {
+            clickMethod : function(data) {
+                alert(data);
             }
         }
     }).mount(".hello");
