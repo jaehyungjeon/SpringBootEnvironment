@@ -1,13 +1,18 @@
 package com.example.personal.RepositoryImpl;
 
 import com.example.personal.Dto.Member;
+import com.example.personal.Dto.QMember;
 import com.example.personal.Repository.MainCustomRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.personal.Dto.QMember.member;
 
@@ -29,7 +34,7 @@ public class MainRepositoryImpl implements MainCustomRepository {
 	@Transactional
 	public void updateMember() {
 		jpaQueryFactory.update(member).
-				set(member.id, "id변경").
+				set(member.id, "changeIdTest").
 				where(member.name.eq("테스트")).
 				execute();
 	}
