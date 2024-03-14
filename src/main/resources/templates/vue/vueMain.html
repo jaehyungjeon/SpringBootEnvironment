@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Adapt Page</title>
+</head>
+<body>
+<div class="hello">
+    <ul>
+        <li v-for="item in arrayData">
+            {{ item }}
+        </li>
+    </ul>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.createApp({
+        name : 'hello',
+        data() {
+            return {
+                arrayData : ['jeon', 'jae', 'hyung']
+            }
+        }
+    }).mount(".hello");
+</script>
+</body>
+</html>

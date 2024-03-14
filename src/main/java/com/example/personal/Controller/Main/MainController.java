@@ -84,4 +84,12 @@ public class MainController extends MainApiController {
 		mainService.updateMember();
 		return forward("complete.html");
 	}
+
+	/*
+	 * vue Adapt Control
+	 **/
+	@PostMapping("initVueMain.action")
+	public ModelAndView initVueMain() throws Exception {
+		return forward("vue/vueMain.html");
+	}
 }
