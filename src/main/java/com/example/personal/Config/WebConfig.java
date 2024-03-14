@@ -1,6 +1,7 @@
 package com.example.personal.Config;
 
 import com.example.personal.Boot.URLInterceptor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 
 @Configuration
+@Slf4j
 public class WebConfig implements WebMvcConfigurer {
 
 	@Bean

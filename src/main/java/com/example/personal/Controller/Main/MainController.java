@@ -1,17 +1,11 @@
 package com.example.personal.Controller.Main;
 
-import com.example.personal.BaseController.BaseController;
-import com.example.personal.Boot.CustomException;
 import com.example.personal.Dto.Member;
 import com.example.personal.Service.Main.MainService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.bridge.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.MessageSourceAccessor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
