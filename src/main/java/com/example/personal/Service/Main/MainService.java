@@ -82,4 +82,11 @@ public class MainService {
 	public List<Member> searchMember(Member member) throws Exception {
 		return mainMybatisRepository.searchMemberList(member);
 	}
+
+	/*
+	 * queryDSL update Method
+	 **/
+	public void updateMember() {
+		mainRepositoryImpl.updateMember();
+	}
 }

@@ -78,4 +78,10 @@ public class MainController extends MainApiController {
 	public ModelAndView mainBootStrap(Member member) throws Exception {
 		return forward("mainBootStrap.html");
 	}
+
+	@PostMapping("updateQueryDSL.action")
+	public ModelAndView updateMember() {
+		mainService.updateMember();
+		return forward("complete.html");
+	}
 }

@@ -5,6 +5,7 @@ import com.example.personal.Repository.MainCustomRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,5 +24,13 @@ public class MainRepositoryImpl implements MainCustomRepository {
 	@Override
 	public List<Member> findAllMembersList2() {
 		return jpaQueryFactory.selectFrom(member).where(member.name.eq("전제형")).fetch();
+	}
+
+	@Transactional
+	public void updateMember() {
+		jpaQueryFactory.update(member).
+				set(member.id, "id변경").
+				where(member.name.eq("테스트")).
+				execute();
 	}
 }
