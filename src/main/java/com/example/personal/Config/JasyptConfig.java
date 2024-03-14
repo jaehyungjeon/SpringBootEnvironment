@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class JasyptConfig {
 
-    @Value("${spring.datasource.password}")
+	@Value("${spring.datasource.password}")
     public String password;
 
 	/*

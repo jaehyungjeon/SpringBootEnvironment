@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css" type="text/css" />
-		<!-- jqGrid CSS -->
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/jqgrid/4.6.0/css/ui.jqgrid.css" type="text/css" />
-		<!-- The actual JQuery code -->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" /></script>
-		<!-- The JQuery UI code -->
-		<script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" /></script>
-		<!-- The jqGrid language file code-->
-		<script type="text/javascript" src="//cdn.jsdelivr.net/jqgrid/4.6.0/i18n/grid.locale-kr.js" /></script>
-		<!-- The atual jqGrid code -->
-		<script type="text/javascript" src="//cdn.jsdelivr.net/jqgrid/4.6.0/jquery.jqGrid.src.js" /></script>
-		<!--<script type="text/javascript" src="../../java/com/example/personal/js/jquery.jqGrid.src.js" />-->
-		<!-- import Axios -->
-		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/axios/dist/axios.min.js" /></script>
-		<title>메인 그리드 페이지</title>
-	</head>
-	<body>
-		Main Grid Page
-		<div class="grid full-height full-height-strict">
-			<table id="grid" class="full-size-jq-grid"></table>
-		</div>
-		
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#grid").jqGrid({
-					url : "/main/ajaxSearchGrid.action",
-					datatype : "json",
-					mtype : 'POST',
-					rownumbers : true,
-					viewrecords: true,
-					colNames : ["아이디", "이름"],
-					colModel : [
-						{name : "id", index : "id", width:200},
-						{name : "name", index : "name", width:300}
-					],
-					jsonReader : {repeatitems:false},
-					beforeRequest : function() {
-						console.log("통신 이전");
-					},
-					loadComplete : function(data) {
-						console.log(data);
-					}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css" type="text/css" />
+	<!-- jqGrid CSS -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/jqgrid/4.6.0/css/ui.jqgrid.css" type="text/css" />
+	<!-- The actual JQuery code -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" /></script>
+	<!-- The JQuery UI code -->
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" /></script>
+	<!-- The jqGrid language file code-->
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jqgrid/4.6.0/i18n/grid.locale-kr.js" /></script>
+	<!-- The atual jqGrid code -->
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jqgrid/4.6.0/jquery.jqGrid.src.js" /></script>
+	<!--<script type="text/javascript" src="../../java/com/example/personal/js/jquery.jqGrid.src.js" />-->
+	<!-- import Axios -->
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/axios/dist/axios.min.js" /></script>
+	<title>메인 그리드 페이지</title>
+</head>
+<body>
+Main Grid Page
+<div class="grid full-height full-height-strict">
+	<table id="grid" class="full-size-jq-grid"></table>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#grid").jqGrid({
+			url : "/main/ajaxSearchGrid.action",
+			datatype : "json",
+			mtype : 'POST',
+			rownumbers : true,
+			viewrecords: true,
+			colNames : ["아이디", "이름"],
+			colModel : [
+				{name : "id", index : "id", width:200},
+				{name : "name", index : "name", width:300}
+			],
+			jsonReader : {repeatitems:false},
+			beforeRequest : function() {
+				console.log("통신 이전");
+			},
+			loadComplete : function(data) {
+				console.log(data);
+			}
+		});
+
+		/* ajax 통신 예제 */
+		$.ajax({
+			url : "/main/ajaxSearchGrid.action",
+			dataType : "json",
+			success : function(data) {
+				console.log("ajax로 받았음");
+				data.forEach(o => {
+					// console.log(o);
 				});
+			}
+		});
 
-				/* ajax 통신 예제 */
-				$.ajax({
-					url : "/main/ajaxSearchGrid.action",
-					dataType : "json",
-					success : function(data) {
-						console.log("ajax로 받았음");
-						data.forEach(o => {
-							// console.log(o);
-						});
-					}
-				});
-
-				/* axios 통신 예제 */
-				axios.post("/main/ajaxSearchGrid.action")
-						.then((result) => {
-							var data = result.data;
-							console.log("axios로 받았음");
-							data.forEach(o => {
-								// console.log(o);
-							});
-						});
-
-				/* fetch 통신 예제(POST) */
-				fetch("/main/ajaxSearchGrid.action", {
-						method: 'POST',
-						header: {
-							"Content-Type": "application/json"
-						},
-						// body: JSON.stringify(o)
-				}).then((response) => {
-					if(response.ok) { return response.json() };
-				}).then((result) => {
-					console.log("fetch로 받았음(POST)");
-					result.forEach(o => {
+		/* axios 통신 예제 */
+		axios.post("/main/ajaxSearchGrid.action")
+				.then((result) => {
+					var data = result.data;
+					console.log("axios로 받았음");
+					data.forEach(o => {
 						// console.log(o);
 					});
-				}).catch((error) => {
-					console.log(error);
 				});
-			});
 
-			/* fetch 통신 예제(GET) -> GET이 순서가 더 빠른듯? */
-			fetch("/main/ajaxSearchGridGet.action")
-					.then((response) => {
-						if(response.ok) {
-							return response.json();
-						}
-					}).then((result) => {
-						console.log("fetch로 받았음(GET)")
-						result.forEach(o => {
-							// console.log(o);
-						});
-			}).catch((error) => {
-				console.log(error);
+		/* fetch 통신 예제(POST) */
+		fetch("/main/ajaxSearchGrid.action", {
+			method: 'POST',
+			header: {
+				"Content-Type": "application/json"
+			},
+			// body: JSON.stringify(o)
+		}).then((response) => {
+			if(response.ok) { return response.json() };
+		}).then((result) => {
+			console.log("fetch로 받았음(POST)");
+			result.forEach(o => {
+				// console.log(o);
 			});
-		</script>
-	</body>
+		}).catch((error) => {
+			console.log(error);
+		});
+	});
+
+	/* fetch 통신 예제(GET) -> GET이 순서가 더 빠른듯? */
+	fetch("/main/ajaxSearchGridGet.action")
+			.then((response) => {
+				if(response.ok) {
+					return response.json();
+				}
+			}).then((result) => {
+		console.log("fetch로 받았음(GET)")
+		result.forEach(o => {
+			// console.log(o);
+		});
+	}).catch((error) => {
+		console.log(error);
+	});
+</script>
+</body>
 </html>
