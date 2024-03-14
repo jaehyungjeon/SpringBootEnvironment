@@ -80,7 +80,7 @@ public class MainController extends MainApiController {
 	}
 
 	@PostMapping("updateQueryDSL.action")
-	public ModelAndView updateMember() {
+	public ModelAndView updateMember(Member member) {
 		mainService.updateMember();
 		return forward("complete.html");
 	}
