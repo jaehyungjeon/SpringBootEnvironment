@@ -13,7 +13,7 @@ public class MessageConfig {
 
     /*
      * multi messages properties path
-     * @ref : application.properties
+     * @ref : application.yml
      **/
     @Value("${spring.messages.basename}")
     public String[] messagePath;
