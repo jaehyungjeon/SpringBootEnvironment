@@ -16,6 +16,7 @@
             driver-class-name: org.mariadb.jdbc.Driver
             username: root
             password: test123
+            #password : ENC(HcGM1fCaENprLeBAqFXStw==)
 
             mapper-locations: classpath:/mapper/**/*.xml
             jdbc-url: jdbc:mariadb://localhost:3306/project
