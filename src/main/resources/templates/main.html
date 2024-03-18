@@ -9,7 +9,14 @@ Main Page
 <button id="print">출력</button>
 <br/>
 <hr/>
+<h2>MEMBER ENTITY로 뽑은 데이터</h2>
 <th:block th:each="member : ${data}">
+	<li th:text="${member.name}" />
+</th:block>
+<br/><br/>
+<hr/>
+<h2>MEMBER DTO로 뽑은 데이터</h2>
+<th:block th:each="member : ${dataDto}">
 	<li th:text="${member.name}" />
 </th:block>
 

@@ -1,6 +1,7 @@
 package com.example.personal.Controller.Main;
 
 import com.example.personal.Dto.Member;
+import com.example.personal.Dto.MemberDto;
 import com.example.personal.Service.Main.MainService;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
@@ -27,6 +28,7 @@ public class MainController extends MainApiController {
 		ModelAndView mav = new ModelAndView();
 		mainService.initMain(member);
 		mav.addObject("data", mainService.returnQueryMemberList(member));
+		mav.addObject("dataDto", mainService.searchMember(new MemberDto()));
 
 		return forward("main.html", mav.getModel());
 	}

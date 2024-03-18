@@ -1,6 +1,7 @@
 package com.example.personal.Service.Main;
 
 import com.example.personal.Dto.Member;
+import com.example.personal.Dto.MemberDto;
 import com.example.personal.MybatisRepository.MainMybatisRepository;
 import com.example.personal.Repository.MainRepository;
 import com.example.personal.RepositoryImpl.MainRepositoryImpl;
@@ -79,9 +80,10 @@ public class MainService extends BaseService {
 		return mainRepositoryImpl.findAllMembersList();
 	}
 
-//	public List<MemberDto> searchMember(Member member) throws Exception {
-//		return mainMybatisRepository.searchMemberDtoList(member);
-//	}
+	public List<MemberDto> searchMember(MemberDto member) throws Exception {
+		MemberDto mem = MemberDto.builder().name("QQ").build();
+		return mainMybatisRepository.searchMemberDtoList(mem);
+	}
 
 	public List<Member> searchMember(Member member) throws Exception {
 		return mainMybatisRepository.searchMemberList(member);
