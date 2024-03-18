@@ -44,7 +44,7 @@ public class MainController extends MainApiController {
 	}
 
 	@PostMapping("mainGrid.action")
-	public ModelAndView mainGrid(ModelAndView modelAndView) throws Exception {
+	public ModelAndView mainGrid() throws Exception {
 		return forward("mainGrid.html");
 	}
 
