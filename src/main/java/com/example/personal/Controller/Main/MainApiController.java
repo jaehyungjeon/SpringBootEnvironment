@@ -5,7 +5,8 @@ import com.example.personal.Boot.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
@@ -16,7 +17,7 @@ public abstract class MainApiController extends BaseController {
      * Confirm : Postman (http://host/main/customError.action)
      **/
 	@PostMapping("customError.action")
-	public ResponseEntity<Object> testError() {
+	public ResponseEntity<Object> customErrorEntity() {
 		try {
 			throw new CustomException(HttpStatus.UNAUTHORIZED, "Detail Error Code");
 		} catch(CustomException e){
