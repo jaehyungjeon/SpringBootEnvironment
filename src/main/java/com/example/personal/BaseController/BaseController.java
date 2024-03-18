@@ -31,7 +31,11 @@ public abstract class BaseController extends AbstractController {
      * return forward overwrite
      **/
     protected ModelAndView forward(String url) {
-        return forward(url, null);
+        return forward(url, new ModelAndView());
+    }
+
+    protected ModelAndView forward(String url, ModelAndView modelAndView) {
+        return forward(url, modelAndView.getModel());
     }
 
     protected ModelAndView forward(String url, Map<String, ?> model) {
