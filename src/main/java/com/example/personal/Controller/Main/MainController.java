@@ -83,7 +83,7 @@ public class MainController extends MainApiController {
 	public ModelAndView updateMember(Member member) {
 		ModelAndView mav = new ModelAndView();
 		try {
-			mainService.updateMember();
+			mainService.updateMember(member);
 			mav.addObject("data", "완료 되었습니다.");
 		} catch (Exception e){
 			mav.addObject("data", "실패 하였습니다.");
