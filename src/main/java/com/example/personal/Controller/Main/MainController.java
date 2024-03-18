@@ -81,8 +81,14 @@ public class MainController extends MainApiController {
 
 	@PostMapping("updateQueryDSL.action")
 	public ModelAndView updateMember(Member member) {
-		mainService.updateMember();
-		return forward("complete.html");
+		ModelAndView mav = new ModelAndView();
+		try {
+			mainService.updateMember();
+			mav.addObject("data", "완료 되었습니다.");
+		} catch (Exception e){
+			mav.addObject("data", "실패 하였습니다.");
+		}
+		return forward("complete.html", mav.getModel());
 	}
 
 	/*
