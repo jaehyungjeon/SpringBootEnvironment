@@ -14,7 +14,7 @@ import java.util.Locale;
 
 @Service
 @Slf4j
-public class MainService {
+public class MainService extends BaseService {
 
 	@Autowired
 	private MainRepository mainRepository;
@@ -30,9 +30,13 @@ public class MainService {
 
 	public void initMain(Member member) throws Exception {
 		System.out.println("서비스 호출");
-		log.info("메시지={}", messageSourceAccessor.getMessage("main.test", "바보", Locale.US));
-		log.info("메시지2={}", messageSourceAccessor.getMessage("root.test", "루트에서 꺼내옴"));
-		log.info("메시지3={}", messageSourceAccessor.getMessage("root.korean"));
+		log.info("메시지 다이렉트 사용1={}", messageSourceAccessor.getMessage("main.test", "바보", Locale.US));
+		log.info("메시지 다이렉트 사용2={}", messageSourceAccessor.getMessage("root.test", "루트에서 꺼내옴"));
+		log.info("메시지 다이렉트 사용3={}", messageSourceAccessor.getMessage("root.korean"));
+
+		log.info("메시지 추상클래스 사용1={}", Message("main.test", "바보", Locale.US));
+		log.info("메시지 추상클래스 사용2={}", Message("root.test", "루트에서 꺼내옴"));
+		log.info("메시지 추상클래스 사용3={}", Message("root.korean"));
 
 		/* jpa 사용 */
 		List<Member> lMember = mainRepository.findAll();
