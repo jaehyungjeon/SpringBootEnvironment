@@ -9,10 +9,15 @@
 		FROM member
 	</select>
 
-	<select id="searchMemberDtoList" parameterType="com.example.personal.Dto.Member" resultType="com.example.personal.Dto.MemberDto">
-		SELECT id,
-			   password,
-			   name
-		FROM member
+	<select id="searchMemberDtoList" parameterType="com.example.personal.Dto.MemberDto" resultType="com.example.personal.Dto.MemberDto">
+		SELECT b.id,
+			   b.password,
+			   b.name
+		FROM member b
+		<where>
+			<if test="name != null and name != ''">
+				AND b.name = #{name, jdbcType=VARCHAR}
+			</if>
+		</where>
 	</select>
 </mapper>

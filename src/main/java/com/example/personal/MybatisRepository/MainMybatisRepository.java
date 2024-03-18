@@ -10,5 +10,5 @@ import com.example.personal.Dto.MemberDto;
 @Mapper
 public interface MainMybatisRepository {
 	List<Member> searchMemberList(Member member);
-	List<MemberDto> searchMemberDtoList(Member member);
+	List<MemberDto> searchMemberDtoList(MemberDto member);
 }
