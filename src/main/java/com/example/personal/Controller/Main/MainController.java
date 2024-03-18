@@ -79,6 +79,12 @@ public class MainController extends MainApiController {
 		return forward("mainBootStrap.html");
 	}
 
+	/*
+	 * 데이터가 있는 경우, 2가지 타입으로 return 가능
+	 * 1. Mav 모델 형식 : modelAndView.getModel();
+	 * 2. Mav 형식 : mav
+	 * @ref : BaseController.java
+	 **/
 	@PostMapping("updateQueryDSL.action")
 	public ModelAndView updateMember(Member member) {
 		ModelAndView mav = new ModelAndView();
@@ -88,7 +94,9 @@ public class MainController extends MainApiController {
 		} catch (Exception e){
 			mav.addObject("data", "실패 하였습니다.");
 		}
-		return forward("complete.html", mav.getModel());
+
+//		return forward("complete.html", mav.getModel());
+		return forward("complete.html", mav);
 	}
 
 	/*
