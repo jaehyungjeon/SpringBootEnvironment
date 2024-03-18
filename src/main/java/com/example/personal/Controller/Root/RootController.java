@@ -23,7 +23,7 @@ public class RootController extends BaseController {
 	 * Root Domain redirect to Main Page
 	 **/
 	@RequestMapping(path = {"/", ""})
-	public ModelAndView test() throws Exception {
+	public ModelAndView rootRedriect() throws Exception {
 		return redirect("/main/initMain.action");
 	}
 }
