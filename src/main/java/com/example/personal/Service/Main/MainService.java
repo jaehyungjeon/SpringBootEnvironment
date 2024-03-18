@@ -81,8 +81,9 @@ public class MainService extends BaseService {
 	}
 
 	public List<MemberDto> searchMember(MemberDto member) throws Exception {
-		MemberDto mem = MemberDto.builder().name("QQ").build();
-		return mainMybatisRepository.searchMemberDtoList(mem);
+		/* Object Builder Use */
+		member = MemberDto.builder().name("QQ").build();
+		return mainMybatisRepository.searchMemberDtoList(member);
 	}
 
 	public List<Member> searchMember(Member member) throws Exception {
