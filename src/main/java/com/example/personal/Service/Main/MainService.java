@@ -86,7 +86,7 @@ public class MainService {
 	/*
 	 * queryDSL update Method
 	 **/
-	public void updateMember() {
-		mainRepositoryImpl.updateMember();
+	public void updateMember(Member member) {
+		mainRepositoryImpl.updateMember(member);
 	}
 }

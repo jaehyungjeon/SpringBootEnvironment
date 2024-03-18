@@ -5,6 +5,11 @@
 	<title>Complete Page</title>
 </head>
 <body>
-	<div th:text="${data}"></div>
+	<form name="sqlUpdateForm">
+		<div th:text="${data}"></div>
+		<label for="id">ID : </label>
+		<input name="id" id="id" value="" maxlength="100">
+		<button type="submit" th:text="반영"></button>
+	</form>
 </body>
 </html>

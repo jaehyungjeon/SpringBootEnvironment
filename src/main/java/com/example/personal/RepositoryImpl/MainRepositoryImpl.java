@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,9 +33,10 @@ public class MainRepositoryImpl implements MainCustomRepository {
 	}
 
 	@Transactional
-	public void updateMember() {
+	public void updateMember(Member mem) {
+		String id = StringUtils.isEmpty(mem.getId()) ? "TestTest" : mem.getId();
 		jpaQueryFactory.update(member).
-				set(member.id, "changeIdTest").
+				set(member.id, id).
 				where(member.name.eq("테스트")).
 				execute();
 	}
