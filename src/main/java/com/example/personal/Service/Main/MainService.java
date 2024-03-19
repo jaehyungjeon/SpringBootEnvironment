@@ -16,7 +16,7 @@ import java.util.Locale;
 
 @Service
 @Slf4j
-public class MainService extends BaseAbstractService {
+public class MainService extends BaseService {
 
 	@Autowired
 	private MainRepository mainRepository;
