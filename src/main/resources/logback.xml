@@ -16,4 +16,8 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
+    <!-- DEBUG 레벨로 바꾸면 콘솔이 길어서 주석처리 -->
+<!--    <root level="DEBUG">-->
+<!--        <appender-ref ref="STDOUT" />-->
+<!--    </root>-->
 </configuration>

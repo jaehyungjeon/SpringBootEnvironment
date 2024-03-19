@@ -16,7 +16,7 @@ import java.util.Locale;
 
 @Service
 @Slf4j
-public class MainService extends BaseService {
+public class MainService extends BaseAbstractService {
 
 	@Autowired
 	private MainRepository mainRepository;
@@ -43,6 +43,8 @@ public class MainService extends BaseService {
 		log.info("메시지 추상클래스 사용1={}", Message("main.test", "바보", Locale.US));
 		log.info("메시지 추상클래스 사용2={}", Message("root.test", "루트에서 꺼내옴"));
 		log.info("메시지 추상클래스 사용3={}", Message("root.korean"));
+
+		logger.debug("커스텀한 debug값... logback.xml에서 root level을 변경하면 결과 나옴.");
 
 		/* jpa 사용 */
 		List<Member> lMember = mainRepository.findAll();
