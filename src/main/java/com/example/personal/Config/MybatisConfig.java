@@ -23,6 +23,9 @@ public class MybatisConfig {
 	@Value("${spring.datasource.mapper-locations}")
 	public String mPath;
 
+	@Value("${mybatis.config-location}")
+	public String configPath;
+
 	@Bean(name = "dataSource")
 	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource DataSource() {
@@ -34,6 +37,9 @@ public class MybatisConfig {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(DataSource);
 		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources(mPath));
+
+		// Mybatis-config에서 부여한 별칭을 세팅
+		sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource(configPath));
 
 		return sqlSessionFactoryBean.getObject();
 	}

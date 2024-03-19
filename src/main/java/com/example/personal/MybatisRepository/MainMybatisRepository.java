@@ -26,6 +26,12 @@ public interface MainMybatisRepository {
 
 	/*
 	 * 작성일 : 2024.03.19
+	 * 내 용 : 회원 리스트 조회 - config의 typeAlias 활용한 예제
+	 **/
+	List<MemberDto> searchMemberDtoAliasList(MemberDto member);
+
+	/*
+	 * 작성일 : 2024.03.19
 	 * 내 용 : 회원 리스트 조회 - Member, Information 테이블 조인
 	 **/
 	List<Information> searchMemeberJoinList(MemberDto member);

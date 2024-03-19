@@ -47,3 +47,8 @@
     jasypt:
         encryptor:
             bean: jasyptStringEncryptor
+
+
+
+    mybatis:
+      config-location: classpath:mybatis-config.xml
