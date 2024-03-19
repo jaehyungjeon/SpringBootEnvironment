@@ -1,16 +1,15 @@
 package com.example.personal.Config;
 
+import ch.qos.logback.classic.selector.servlet.LoggerContextFilter;
 import com.example.personal.Boot.URLInterceptor;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import ch.qos.logback.classic.selector.servlet.LoggerContextFilter;
-import jakarta.servlet.DispatcherType;
-import jakarta.servlet.Filter;
 
 @Configuration
 @Slf4j
