@@ -1,7 +1,5 @@
 package com.example.personal.Boot;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.lang.annotation.*;
 
 @Documented

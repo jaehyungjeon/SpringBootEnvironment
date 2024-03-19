@@ -22,16 +22,28 @@ import static com.example.personal.Dto.QMember.member;
 public class MainRepositoryImpl implements MainCustomRepository {
 	private final JPAQueryFactory jpaQueryFactory;
 
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - jpa, queryDSL 사용
+	 **/
 	@Override
 	public List<Member> findAllMembersList() {
 		return jpaQueryFactory.select(member).from(member).fetch();
 	};
 
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - jpa, queryDSL 사용, 옵션정보 추가
+	 **/
 	@Override
 	public List<Member> findAllMembersList2() {
 		return jpaQueryFactory.selectFrom(member).where(member.name.eq("전제형")).fetch();
 	}
 
+	/*
+	 * 작성일 : 2024.03.08
+	 * 내 용 : 회원정보 갱신 - queryDSL을 활용한 update
+	 **/
 	@Transactional
 	public void updateMember(Member mem) {
 		String id = StringUtils.isEmpty(mem.getId()) ? "TestTest" : mem.getId();

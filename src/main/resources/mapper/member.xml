@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.personal.MybatisRepository.MainMybatisRepository"><!-- mapper 인터페이스가 위치하는 경로 -->
 
+	<!--
+		작성일 : 2024.03.13
+		내 용 : 회원 리스트 조회 - Entity 사용
+	-->
 	<select id="searchMemberList" parameterType="com.example.personal.Dto.Member" resultType="com.example.personal.Dto.Member">
 		SELECT id,
 			   password,
@@ -9,6 +13,10 @@
 		FROM member
 	</select>
 
+	<!--
+		작성일 : 2024.03.14
+		내 용 : 회원 리스트 조회 - 객체 사용
+	-->
 	<select id="searchMemberDtoList" parameterType="com.example.personal.Dto.MemberDto" resultType="com.example.personal.Dto.MemberDto">
 		SELECT b.id,
 			   b.password,
@@ -17,6 +25,35 @@
 		<where>
 			<if test="name != null and name != ''">
 				AND b.name = #{name, jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!--
+		작성일 : 2024.03.19
+		내 용 : 회원 리스트 조회 - Member, Information 테이블 조인
+	-->
+	<resultMap id="returnMemeberJoinMap" type="com.example.personal.Dto.Information.Information">
+		<id	column="id"						property="id" />
+		<result	column="use_yn"				property="use_yn" />
+
+		<collection property="memberDto" javaType="com.example.personal.Dto.MemberDto">
+			<result	column="id"				property="id"/>
+			<result	column="name"			property="name" />
+			<result column="password"		property="password" />
+		</collection>
+	</resultMap>
+
+	<select id="searchMemeberJoinList" parameterType="com.example.personal.Dto.MemberDto" resultMap="returnMemeberJoinMap">
+		SELECT m.id,
+			   m.password,
+			   m.name,
+			   i.use_yn
+		FROM member m, information i
+		<where>
+			AND m.id = i.id
+			<if test="id != null and id != ''">
+				AND m.id = #{id, jdbcType=VARCHAR}
 			</if>
 		</where>
 	</select>

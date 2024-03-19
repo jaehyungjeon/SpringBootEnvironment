@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Slf4j
 public abstract class MainApiController extends BaseController {
 
-    /*
-     * Exception throw to Custom Exception Object
-     * Confirm : Postman (http://host/main/customError.action)
-     **/
+	/*
+	 * 작성일 : 2024.03.11
+	 * 내 용 : CUSTOM ERROR 결과 확인
+	 * Exception throw to Custom Exception Object
+	 * Confirm : Postman (http://host/main/customError.action)
+	 **/
 	@PostMapping("customError.action")
 	public ResponseEntity<Object> customErrorEntity() {
 		try {

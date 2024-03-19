@@ -8,9 +8,17 @@ import java.util.List;
 
 public interface MainRepository extends JpaRepository<Member, String>, MainCustomRepository {
 
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - jpa, @Query Annotation 사용
+	 **/
 	@Query("SELECT p FROM Member p")
 	List<Member> findAllMemberList();
 
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - queryDSL overriding
+	 **/
 	@Override
 	List<Member> findAllMembersList();
 }
