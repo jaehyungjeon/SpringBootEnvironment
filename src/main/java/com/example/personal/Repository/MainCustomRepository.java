@@ -8,6 +8,16 @@ import java.util.List;
 
 @Repository
 public interface MainCustomRepository {
-    List<Member> findAllMembersList();
-    List<Member> findAllMembersList2();
+
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - queryDSL 사용을 위한 repository 선언
+	 **/
+	List<Member> findAllMembersList();
+
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - queryDSL 사용을 위한 repository 선언(옵션 반영)
+	 **/
+	List<Member> findAllMembersList2();
 }
