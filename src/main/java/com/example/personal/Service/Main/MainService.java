@@ -125,6 +125,16 @@ public class MainService extends BaseService {
 
 	/*
 	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - 객체 사용
+	 **/
+	public List<MemberDto> searchMemberAlias(MemberDto member) throws Exception {
+		/* Object Builder Use */
+		member = MemberDto.builder().name("QQ").build();
+		return mainMybatisRepository.searchMemberDtoAliasList(member);
+	}
+
+	/*
+	 * 작성일 : 2024.03.07
 	 * 내 용 : 회원 리스트 조회 - Entity 사용
 	 **/
 	public List<Member> searchMember(Member member) throws Exception {

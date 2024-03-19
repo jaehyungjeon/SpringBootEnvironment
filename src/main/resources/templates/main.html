@@ -23,6 +23,14 @@ Main Page
 		<li th:text="${member.id}" />
 	</th:block>
 </div>
+<br/><br/>
+<hr/>
+<h2>MEMBER DTO의 alias객체로 뽑은 데이터</h2>
+<div>ID :
+	<th:block th:each="member : ${dataDto}">
+		<li th:text="${member.id}" />
+	</th:block>
+</div>
 <script type="text/javascript">
 	window.onload = function() {
 		const fnPrint = () => {

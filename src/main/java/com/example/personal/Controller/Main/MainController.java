@@ -33,6 +33,8 @@ public class MainController extends MainApiController {
 		mainService.initMain(member);
 		mav.addObject("data", mainService.returnQueryMemberList(member));
 		mav.addObject("dataDto", mainService.searchMember(new MemberDto()));
+		/* config alias 활용하여 리턴시킨 값 */
+		mav.addObject("dataDtoAlias", mainService.searchMemberAlias(new MemberDto()));
 
 		return forward("main.html", mav.getModel());
 	}
