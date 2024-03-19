@@ -29,4 +29,10 @@ public interface MainMybatisRepository {
 	 * 내 용 : 회원 리스트 조회 - Member, Information 테이블 조인
 	 **/
 	List<Information> searchMemeberJoinList(MemberDto member);
+
+	/*
+	 * 작성일 : 2024.03.19
+	 * 내 용 : 회원 리스트 조회 - Member, Information 테이블 조인, forEach 구문
+	 **/
+	List<Information> searchMemeberJoinMultiList(MemberDto member);
 }

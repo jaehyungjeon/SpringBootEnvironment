@@ -15,4 +15,6 @@ public class MemberDto implements Serializable {
 	private String id;
 	private String password;
 	private String name;
+
+	private String[] idArrayList;
 }
