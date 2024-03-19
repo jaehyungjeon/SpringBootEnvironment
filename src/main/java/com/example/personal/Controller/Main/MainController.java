@@ -22,6 +22,10 @@ public class MainController extends MainApiController {
 	@Autowired
 	private MainService mainService;
 
+	/*
+	 * 작성일 : 2024.03.04
+	 * 내 용 : 메인 페이지 조회
+	 **/
 	@PostMapping("initMain.action")
 	public ModelAndView initMain(Member member) throws Exception {
 		System.out.println("메인 페이지 출력!!");
@@ -33,33 +37,57 @@ public class MainController extends MainApiController {
 		return forward("main.html", mav.getModel());
 	}
 
+	/*
+	 * 작성일 : 2024.03.04
+	 * 내 용 : 메인 페이지 조회 - 타임리프 레이아웃 미반영
+	 **/
 	@PostMapping("mainNoLayout.action")
 	public ModelAndView mainNoLayout() {
 		return forward("mainNoLayout.html");
 	}
 
+	/*
+	 * 작성일 : 2024.03.04
+	 * 내 용 : 메인 페이지 조회 - 타임리프 레이아웃 반영
+	 **/
 	@PostMapping("mainLayout.action")
 	public ModelAndView mainLayout() {
 		return forward("mainLayout.html");
 	}
 
+	/*
+	 * 작성일 : 2024.03.05
+	 * 내 용 : 그리드 반영
+	 **/
 	@PostMapping("mainGrid.action")
 	public ModelAndView mainGrid() throws Exception {
 		return forward("mainGrid.html");
 	}
 
+	/*
+	 * 작성일 : 2024.03.05
+	 * 내 용 : 그리드 ajax 데이터 POST
+	 **/
 	@PostMapping("ajaxSearchGrid.action")
 	@ResponseBody
 	public List<Member> searchMember(Member member) throws Exception {
 		return mainService.searchMember(member);
 	}
 
+	/*
+	 * 작성일 : 2024.03.05
+	 * 내 용 : 그리드 ajax 데이터 GET
+	 **/
 	@GetMapping("ajaxSearchGridGet.action")
 	@ResponseBody
 	public List<Member> searchMemeberGet(Member member) throws Exception {
 		return mainService.searchMember(member);
 	}
 
+	/*
+	 * 작성일 : 2024.03.05
+	 * 내 용 : 그리드 ajax 데이터 POST - DUMMY
+	 **/
 	@PostMapping("ajaxSearchGridJson.action")
 	@ResponseBody
 	public JSONArray searchMemberJson(Member member) throws Exception {
@@ -76,12 +104,18 @@ public class MainController extends MainApiController {
 		return jsonArray;
 	}
 
+	/*
+	 * 작성일 : 2024.03.06
+	 * 내 용 : 메인 부트스트랩 적용 페이지 - IMPORT 이슈로 상대경로 X
+	 **/
 	@PostMapping("mainBootStrap.action")
 	public ModelAndView mainBootStrap(Member member) throws Exception {
 		return forward("mainBootStrap.html");
 	}
 
 	/*
+	 * 작성일 : 2024.03.08
+	 * 내 용 : 회원정보 갱신 - queryDSL을 활용한 update
 	 * 데이터가 있는 경우, 2가지 타입으로 return 가능
 	 * 1. Mav 모델 형식 : modelAndView.getModel();
 	 * 2. Mav 형식 : mav
@@ -102,6 +136,8 @@ public class MainController extends MainApiController {
 	}
 
 	/*
+	 * 작성일 : 2024.03.06
+	 * 내 용 : 메인 VUE3 적용 페이지
 	 * vue Adapt Control
 	 **/
 	@PostMapping("initVueMain.action")
