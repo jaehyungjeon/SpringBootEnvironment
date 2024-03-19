@@ -10,9 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -98,7 +100,17 @@ public class MainService extends BaseService {
 			log.info("옵션 + 조인된 information의 사용여부 값 {}", m.getUse_yn());
 		}
 
-		memberDto = MemberDto.builder().idArrayList(new String[]{"jaehyung03", "jaehyung601"}).build();
+		/*
+		 * join id value Change Array
+		 **/
+		String[] memberIdArray = memberJoinInformList.parallelStream().map(o -> {
+			if(!ObjectUtils.isEmpty(o.getMemberDto())){
+				return o.getMemberDto();
+			}
+			return new MemberDto();
+		}).map(MemberDto::getId).collect(Collectors.toList()).toArray(new String[]{});
+
+		memberDto = MemberDto.builder().idArrayList(memberIdArray).build();
 		List<Information> memberJoinMultiList = mainMybatisRepository.searchMemeberJoinMultiList(memberDto);
 		for(Information m : memberJoinMultiList) {
 			log.info("다중 memberDto의 값 {}", m.getMemberDto());
