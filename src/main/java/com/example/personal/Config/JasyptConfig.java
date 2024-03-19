@@ -1,22 +1,15 @@
 package com.example.personal.Config;
 
-import ch.qos.logback.classic.selector.servlet.LoggerContextFilter;
-import com.example.personal.Boot.URLInterceptor;
-import jakarta.servlet.DispatcherType;
-import jakarta.servlet.Filter;
-import lombok.extern.slf4j.Slf4j;
+import com.example.personal.Boot.LoggerFactory;
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class JasyptConfig {
+public class JasyptConfig extends LoggerFactory {
 
 	@Value("${spring.datasource.password}")
     public String password;
@@ -38,6 +31,7 @@ public class JasyptConfig {
         config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator"); // salt 생성 클래스
         config.setStringOutputType("base64"); //인코딩 방식
         encryptor.setConfig(config);
+
         return encryptor;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.personal.Service.Main;
 
+import com.example.personal.Boot.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Locale;
 
 @Component
-public abstract class BaseService {
+public abstract class BaseService extends LoggerFactory {
 
     @Autowired
     public MessageSourceAccessor messageSourceAccessor;
