@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -94,6 +95,13 @@ public class MainService extends BaseService {
 		for(Information m : memberJoinInformOptList) {
 			log.info("옵션 + 조인된 memberDto의 값 {}", m.getMemberDto());
 			log.info("옵션 + 조인된 information의 사용여부 값 {}", m.getUse_yn());
+		}
+
+		memberDto = MemberDto.builder().idArrayList(new String[]{"jaehyung03", "jaehyung601"}).build();
+		List<Information> memberJoinMultiList = mainMybatisRepository.searchMemeberJoinMultiList(memberDto);
+		for(Information m : memberJoinMultiList) {
+			log.info("다중 memberDto의 값 {}", m.getMemberDto());
+			log.info("다중 information의 사용여부 값 {}", m.getUse_yn());
 		}
 	}
 

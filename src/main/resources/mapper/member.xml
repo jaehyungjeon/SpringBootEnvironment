@@ -57,4 +57,24 @@
 			</if>
 		</where>
 	</select>
+
+	<!--
+		작성일 : 2024.03.19
+		내 용 : 회원 리스트 조회 - Member, Information 테이블 조인, forEach 구문
+	-->
+	<select id="searchMemeberJoinMultiList" parameterType="com.example.personal.Dto.MemberDto" resultMap="returnMemeberJoinMap">
+		SELECT m.id,
+		m.password,
+		m.name,
+		i.use_yn
+		FROM member m, information i
+		<where>
+			AND m.id = i.id
+			<if test="idArrayList != null and idArrayList != ''">
+				<foreach collection="idArrayList" item="id" open="AND m.id IN (" separator="," close=")">
+					#{id, jdbcType=VARCHAR}
+				</foreach>
+			</if>
+		</where>
+	</select>
 </mapper>
