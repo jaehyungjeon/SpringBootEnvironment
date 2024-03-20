@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/푸바오리사이징.jpg">
+  <img alt="Vue logo" src="./assets/pepe.jpg">
   <HelloWorld msg="메인페이지 구성"/>
 </template>
 
