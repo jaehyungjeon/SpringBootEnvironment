@@ -1,6 +1,7 @@
 package com.example.personal.Service.Main;
 
 import com.example.personal.Dto.Information.Information;
+import com.example.personal.Dto.Information.InformationEntity;
 import com.example.personal.Dto.Member;
 import com.example.personal.Dto.MemberDto;
 import com.example.personal.MybatisRepository.MainMybatisRepository;
@@ -46,7 +47,7 @@ public class MainService extends BaseService {
 		log.info("메시지 추상클래스 사용2={}", Message("root.test", "루트에서 꺼내옴"));
 		log.info("메시지 추상클래스 사용3={}", Message("root.korean"));
 
-		logger.debug("커스텀한 debug값... logback.xml에서 root level을 변경하면 결과 나옴.");
+		logger.debug("DEBUG!!!!!");
 
 		/* jpa 사용 */
 		List<Member> lMember = mainRepository.findAll();
@@ -116,6 +117,11 @@ public class MainService extends BaseService {
 			log.info("다중 memberDto의 값 {}", m.getMemberDto());
 			log.info("다중 information의 사용여부 값 {}", m.getUse_yn());
 		}
+
+		/* jpq 조인 시 */
+		for(Object o : findMemeberJoinList()) {
+			logger.debug("jpa 조인했을 때 {}", o);
+		}
 	}
 
 	/*
@@ -160,5 +166,9 @@ public class MainService extends BaseService {
 	 **/
 	public void updateMember(Member member) {
 		mainRepositoryImpl.updateMember(member);
+	}
+
+	public List<?> findMemeberJoinList() {
+		return mainRepository.findMemeberJoinList();
 	}
 }

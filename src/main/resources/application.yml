@@ -4,7 +4,7 @@
             view:
                 prefix: /WEB-INF/views/
                 suffix: .jsp
-            static-path-pattern: /resource/**
+            #static-path-pattern: /resources/**
 
         #hikari pool size
         datasource:
