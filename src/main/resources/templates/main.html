@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>메인 페이지</title>
-</head>
+<th:block th:replace="~{fragment/header :: header(title='메인 페이지')}" />
 <body>
 Main Page
 <button id="print">출력</button>
