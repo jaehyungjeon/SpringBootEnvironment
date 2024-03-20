@@ -17,7 +17,7 @@ public class URLInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		log.info("preHandle 경로 {}", request.getRequestURI());
+//		log.info("preHandle 경로 {}", request.getRequestURI());
 		String requestURI = request.getRequestURI();
 
 		if(requestURI.contains("/errors")) {
