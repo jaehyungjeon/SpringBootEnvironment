@@ -1,6 +1,7 @@
 package com.example.personal.Service.Main;
 
 import com.example.personal.Dto.Information.Information;
+import com.example.personal.Dto.Information.InformationEntity;
 import com.example.personal.Dto.Member;
 import com.example.personal.Dto.MemberDto;
 import com.example.personal.MybatisRepository.MainMybatisRepository;
@@ -116,6 +117,11 @@ public class MainService extends BaseService {
 			log.info("다중 memberDto의 값 {}", m.getMemberDto());
 			log.info("다중 information의 사용여부 값 {}", m.getUse_yn());
 		}
+
+		/* jpq 조인 시 */
+		for(Object o : findMemeberJoinList()) {
+			logger.debug("jpa 조인했을 때 {}", o);
+		}
 	}
 
 	/*
@@ -160,5 +166,9 @@ public class MainService extends BaseService {
 	 **/
 	public void updateMember(Member member) {
 		mainRepositoryImpl.updateMember(member);
+	}
+
+	public List<?> findMemeberJoinList() {
+		return mainRepository.findMemeberJoinList();
 	}
 }
