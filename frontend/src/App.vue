@@ -1,6 +1,6 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/푸바오리사이징.jpg">
+  <HelloWorld msg="메인페이지 구성"/>
 </template>
 
 <script>
