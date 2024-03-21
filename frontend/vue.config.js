@@ -7,7 +7,8 @@ module.exports = defineConfig({
       '/*': {
         // '/api' 로 들어오면 포트 80(스프링 서버)로 보낸다
         target: 'http://localhost:80',
-        changeOrigin: true // cross origin 허용
+        changeOrigin: true, // cross origin 허용
+        ws : false
       }
     }
   }
