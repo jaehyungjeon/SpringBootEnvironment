@@ -1,12 +1,14 @@
 package com.example.personal.Service.Main;
 
 import com.example.personal.Dto.Information.Information;
-import com.example.personal.Dto.Information.InformationEntity;
+import com.example.personal.Dto.Information.QInformationEntity;
 import com.example.personal.Dto.Member;
 import com.example.personal.Dto.MemberDto;
+import com.example.personal.Dto.QMember;
 import com.example.personal.MybatisRepository.MainMybatisRepository;
 import com.example.personal.Repository.MainRepository;
 import com.example.personal.RepositoryImpl.MainRepositoryImpl;
+import com.querydsl.core.Tuple;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
@@ -15,7 +17,7 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
+import java.util.stream.Collectors;import com.example.personal.Dto.Information.InformationEntity;
 
 @Service
 @Slf4j
@@ -121,6 +123,27 @@ public class MainService extends BaseService {
 		/* jpq 조인 시 */
 		for(Object o : findMemeberJoinList()) {
 			logger.debug("jpa 조인했을 때 {}", o);
+		}
+
+		/* queryDSL 조인 시(1. InformationEntity의 값만을 가져온다) */
+		List<InformationEntity> findJoinMemberList = mainRepositoryImpl.findJoinMemberList();
+		for(InformationEntity o : findJoinMemberList) {
+			logger.debug("InformEntity의 id값 {}", o.getId());
+			logger.debug("InformEntity의 use_yn값 {}", o.getUse_yn());
+		}
+
+		/* queryDSL 조인 시(2. InformationEntity, MemberEntity의 값 모두를 가져온다) */
+		List<Tuple> findJoinMemberAllColumnList = mainRepositoryImpl.findJoinMemberAllColumnList();
+		for(Tuple tuple : findJoinMemberAllColumnList) {
+			InformationEntity inform = tuple.get(QInformationEntity.informationEntity);
+			Member memberEntity = tuple.get(QMember.member);
+
+			logger.debug("===============================================");
+			logger.debug("회원 ID {}", memberEntity.getId());
+			logger.debug("회원 PASSWORD {}", memberEntity.getPassword());
+			logger.debug("회원 NAME {}", memberEntity.getName());
+			logger.debug("회원 USE_YN {}", inform.getUse_yn());
+			logger.debug("===============================================");
 		}
 	}
 

@@ -21,8 +21,6 @@ public class QInformationEntity extends EntityPathBase<InformationEntity> {
 
     public final StringPath id = createString("id");
 
-    public final SimplePath<com.example.personal.Dto.MemberDto> memberDto = createSimple("memberDto", com.example.personal.Dto.MemberDto.class);
-
     public final StringPath use_yn = createString("use_yn");
 
     public QInformationEntity(String variable) {

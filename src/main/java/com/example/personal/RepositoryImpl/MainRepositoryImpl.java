@@ -1,20 +1,18 @@
 package com.example.personal.RepositoryImpl;
 
+import com.example.personal.Dto.Information.InformationEntity;
 import com.example.personal.Dto.Member;
-import com.example.personal.Dto.QMember;
 import com.example.personal.Repository.MainCustomRepository;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import static com.example.personal.Dto.Information.QInformationEntity.informationEntity;
 import static com.example.personal.Dto.QMember.member;
 
 @Repository
@@ -38,6 +36,24 @@ public class MainRepositoryImpl implements MainCustomRepository {
 	@Override
 	public List<Member> findAllMembersList2() {
 		return jpaQueryFactory.selectFrom(member).where(member.name.eq("전제형")).fetch();
+	}
+
+	@Override
+	public List<InformationEntity> findJoinMemberList() {
+		return jpaQueryFactory.select(informationEntity)
+				.from(informationEntity)
+				.join(member)
+				.on(informationEntity.id.eq(member.id))
+				.fetch();
+	}
+
+	@Override
+	public List<Tuple> findJoinMemberAllColumnList() {
+		return jpaQueryFactory.select(informationEntity, member)
+				.from(informationEntity)
+				.join(member)
+				.on(informationEntity.id.eq(member.id))
+				.fetch();
 	}
 
 	/*
