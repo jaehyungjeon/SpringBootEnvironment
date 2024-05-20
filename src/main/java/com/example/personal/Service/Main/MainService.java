@@ -191,10 +191,6 @@ public class MainService extends BaseService {
 		mainRepositoryImpl.updateMember(member);
 	}
 
-	/*
-	 * 작성일 : 2024.03.08
-	 * 내 용 : 회원정보 조회 - 테이블 JOIN
-	 **/
 	public List<?> findMemeberJoinList() {
 		return mainRepository.findMemeberJoinList();
 	}

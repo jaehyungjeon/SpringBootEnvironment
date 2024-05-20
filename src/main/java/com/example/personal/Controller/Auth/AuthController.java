@@ -13,6 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class AuthController extends MainApiController {
 
+    /*
+     * 작성일 : 2024.05.20
+     * 내 용 : 카카오 인증
+     **/
     @GetMapping("kakao.action")
     public ModelAndView kakaoOAuthRedirect() throws Exception {
         return forward("kakao.html");
