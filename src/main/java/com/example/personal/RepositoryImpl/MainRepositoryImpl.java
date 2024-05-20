@@ -47,6 +47,10 @@ public class MainRepositoryImpl implements MainCustomRepository {
 				.fetch();
 	}
 
+	/*
+	 * 작성일 : 2024.03.07
+	 * 내 용 : 회원 리스트 조회 - jpa, queryDSL 사용, 전체 컬럼
+	 **/
 	@Override
 	public List<Tuple> findJoinMemberAllColumnList() {
 		return jpaQueryFactory.select(informationEntity, member)
